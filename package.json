@@ -1,14 +1,29 @@
 {
-  "name": "virtuosodb",
+  "name": "Virtuoso-Database",
   "version": "1.0.0",
-  "description": "Virtuoso database",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src",
+    "dev": "nodemon src"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piluqui/Virtuoso-database.git"
+  },
+  "keywords": [],
   "author": "Piluqui",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piluqui/Virtuoso-database/issues"
+  },
+  "homepage": "https://github.com/piluqui/Virtuoso-database#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }

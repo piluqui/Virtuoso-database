@@ -24,9 +24,12 @@ app.listen(app.get('port'), () => {
 });
 
 //client virtuoso
-const {Client} = require('virtuoso-sparql-client');
+//const {Client} = require('virtuoso-sparql-client');
+const {Client, Node, Text, Data, Triple} = require('virtuoso-sparql-client');
+
+
  
-const DbPediaClient = new Client('http://dbpedia.org/sparql');
+const DbPediaClient = new Client('http://192.168.0.22:8890/sparql');
 DbPediaClient.query('DESCRIBE <http://dbpedia.org/resource/Sardinia>')
   .then((results) => {
     console.log(results);
@@ -35,7 +38,7 @@ DbPediaClient.query('DESCRIBE <http://dbpedia.org/resource/Sardinia>')
     console.log(err);
   });
 
-const {Client, Node, Text, Data, Triple} = require('virtuoso-sparql-client');
+//const {Client, Node, Text, Data, Triple} = require('virtuoso-sparql-client');
  
 const SaveClient = new Client("http://www.myendpoint.org/sparql");
 SaveClient.setOptions(

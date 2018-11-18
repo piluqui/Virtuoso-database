@@ -26,10 +26,12 @@ app.listen(app.get('port'), () => {
 
 //client virtuoso
 
-sparql = require ('sparql');
-client = new sparql.Client ('http://dbpedia.org/sparql');
-client.query ('select * where { ?s ?p ?o } limit 100'), (err, res) ->
-  console.log (res);
+sparql = require ('sparql')
+client = new sparql.Client ('http://192.168.0.22:8890/sparql')
+client.query('select * where { ?s foaf:name ?o } limit 100', (err, res) =>
+  console.log (res));
+
+//then(response => Promise.resolve(response.results.bindings[0].leaderName.value));
 
  
 // const DbPediaClient = new Client('http://192.168.0.22:8890/sparql');

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const {Client} = require('virtuoso-sparql-client');
 
 //Setting
 app.set('port', 3000);
@@ -24,13 +25,10 @@ app.listen(app.get('port'), () => {
 });
 
 //client virtuoso
-//const {Client} = require('virtuoso-sparql-client');
-const {Client, Node, Text, Data, Triple} = require('virtuoso-sparql-client');
-
 
  
 const DbPediaClient = new Client('http://192.168.0.22:8890/sparql');
-DbPediaClient.query('DESCRIBE <http://dbpedia.org/resource/Sardinia>')
+DbPediaClient.query('DESCRIBE <http://192.168.0.22:8890>')
   .then((results) => {
     console.log(results);
   })
@@ -38,35 +36,5 @@ DbPediaClient.query('DESCRIBE <http://dbpedia.org/resource/Sardinia>')
     console.log(err);
   });
 
-//const {Client, Node, Text, Data, Triple} = require('virtuoso-sparql-client');
- 
-const SaveClient = new Client("http://www.myendpoint.org/sparql");
-SaveClient.setOptions(
-  "application/json",
-  {"myprefix": "http://www.myschema.org/ontology/"},
-  "http://www.myschema.org/resource/"
-);
- 
-SaveClient.getLocalStore().add(
-  new Triple(
-    new Node("http://www.myschema.org/ontology/id123"),
-    "dcterms:created",
-    new Data(SaveClient.getLocalStore().now, "xsd:dateTimeStamp")
-  )
-);
-SaveClient.getLocalStore().add(
-  new Triple(
-    "myprefix:id123",
-    "rdfs:label",
-    new Text("A new lable", "en"),
-    Triple.ADD
-  )
-);
- 
-SaveClient.store(true)
-.then((result)=>{
-  console.log(result)
-})
-.catch((err) => {
-  console.log(err);
-});
+  
+  //http://192.168.0.22:8890/sparql?query=SELECT%20DISTINCT%20%20?o%20%3Chttp://localhost:8890/DAV/home/dba/rdf_sink/%3E%20WHERE%20{?s%20foaf:name%20?o}

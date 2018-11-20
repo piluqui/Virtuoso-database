@@ -10,13 +10,10 @@ app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs');
 
 
-//middlewares
-
 
 //routes
 app.use(require('./routes/index'));
 
-// static files
 
 
 //listening server
@@ -28,7 +25,7 @@ app.listen(app.get('port'), () => {
 
 sparql = require ('sparql')
 client = new sparql.Client ('http://192.168.0.22:8890/sparql')
-client.query('select * where { ?s foaf:name ?o } limit 100', (err, res) =>
+client.query('select * where { ?s foaf:firstName ?o } limit 10', (err, res) =>
   console.log (res));
 
 //then(response => Promise.resolve(response.results.bindings[0].leaderName.value));
